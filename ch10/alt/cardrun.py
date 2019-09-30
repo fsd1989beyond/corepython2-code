@@ -18,7 +18,7 @@ def safe_float(object):
         retval = float(object)
 
     # failure return value is error reason
-    except (TypeError, ValueError), e:
+    except (TypeError, ValueError) as e:
         retval = str(e)
 
     return retval
@@ -33,13 +33,13 @@ def main():
         ccfile = open('carddata.txt', 'r')
 
     # display error reason on failure
-    except IOError, e:
-        print 'file open failed:', e
+    except IOError as e:
+        print('file open failed:', e)
         return
 
     # otherwise show a diagnostic 'ok'
     else:
-        print 'file opened successfully'
+        print('file opened successfully')
 
     # read all data and close file
     txns = ccfile.readlines()
@@ -47,30 +47,30 @@ def main():
 
     # processing setup
     total = 0.00
-    print 'processing new account, log:'
+    print('processing new account, log:')
 
     # look at each transaction
     for eachTxn in txns:
         result = safe_float(eachTxn)
 
         # string indicates failure ...
-        if isinstance(result, basestring):
+        if isinstance(result, str):
             if eachTxn[0] == '#':
-                print 'comment... ignored'
+                print('comment... ignored')
             else:
-                print '\ncategory:', eachTxn
+                print('\ncategory:', eachTxn)
 
         # ... while float means success
         elif isinstance(result, float):
             total += result
-            print 'processing transaction of: %.2f' % result
+            print('processing transaction of: %.2f' % result)
 
         # unknown return type from safe_float()
         else:
-            print 'invalid return type from safe_float()... ignored'
+            print('invalid return type from safe_float()... ignored')
 
     # display final totals
-    print 'new balance: $%.2f' % (total)
+    print('new balance: $%.2f' % (total))
 
 # call main() if invoked as script
 if __name__ == '__main__':

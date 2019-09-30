@@ -3,15 +3,15 @@
 'readTextFile.py -- read and display test file'
 
 # get filename
-fname = raw_input('Enter file name: ')
+fname = input('Enter file name: ')
 
 # attempt to open file or reading
 try:
     fobj = open(fname, 'r')
-except IOError, e:
-    print "*** file open error:", e
+except IOError as e:
+    print("*** file open error:", e)
 else:
     # display contents to the screen
     for eachLine in fobj:
-        print eachLine,
+        print(eachLine, end=' ')
     fobj.close()
