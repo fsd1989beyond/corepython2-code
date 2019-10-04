@@ -8,6 +8,7 @@ def safe_float(object):
         retval = str(diag)
     return retval
 
+
 def main():
     'handles all the data processing'
     log = open('cardlog.txt', 'w')
@@ -33,5 +34,7 @@ def main():
     print('$%.2f (new balance)' % (total))
     log.close()
 
+
 if __name__ == '__main__':
     main()
+
