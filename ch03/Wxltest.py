@@ -134,4 +134,9 @@ a="123"
 #
 # plt.show(df['ClosePrice'].plot(figsize=(14, 7)))
 
-l = [1,2,"123"]
+
+
+
+
+s = lambda x:x**2
+print( s(3))

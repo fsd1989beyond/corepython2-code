@@ -3,15 +3,15 @@
 import string
 
 while 1:
-    num_str = raw_input('Enter a number: ')
+    num_str = input('Enter a number: ')
     try:
         num_num = string.atoi(num_str)
         break
     except ValueError:
-        print "invalid input... try again"
+        print("invalid input... try again")
 
-fac_list = range(1, num_num + 1)
-print "BEFORE:", `fac_list`
+fac_list = list(range(1, num_num + 1))
+print("BEFORE:", repr(fac_list))
 
 i = 0
 while i < len(fac_list):
@@ -19,4 +19,4 @@ while i < len(fac_list):
         del fac_list[i]
     i = i + 1
 
-print "AFTER:", `fac_list`
+print("AFTER:", repr(fac_list))

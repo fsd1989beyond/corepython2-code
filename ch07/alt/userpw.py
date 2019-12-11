@@ -36,13 +36,13 @@ db = {}
 def newuser():
     prompt = 'login desired: '
     while 1:
-        name = raw_input(prompt)
-        if db.has_key(name):
+        name = input(prompt)
+        if name in db:
             prompt = 'name taken, try another: '
             continue
         else:
             break
-    pwd = raw_input('passwd: ')
+    pwd = input('passwd: ')
     db[name] = pwd
 
 
@@ -50,16 +50,16 @@ def newuser():
 # olduser() -- verify password to login existing users
 #
 def olduser():
-    name = raw_input('login: ')
-    pwd = raw_input('passwd: ')
+    name = input('login: ')
+    pwd = input('passwd: ')
     passwd = db.get(name)
     if passwd == pwd:
         pass
     else:
-        print 'login incorrect'
+        print('login incorrect')
         return
 
-    print 'welcome back', name
+    print('welcome back', name)
 
 
 #
@@ -86,14 +86,14 @@ Enter choice: """
             # if user hits RETURN/Enter, ^C, or ^D (EOF),
             # pretend they typed 'q' to quit normally
             try:
-                choice = raw_input(prompt)[0]
+                choice = input(prompt)[0]
             except (EOFError, KeyboardInterrupt):
                 choice = 'q'
-            print '\nYou picked: [%s]' % choice
+            print('\nYou picked: [%s]' % choice)
 
             # validate option chosen
             if choice not in 'neq':
-                print 'invalid menu option, try again'
+                print('invalid menu option, try again')
             else:
                 chosen = 1
 

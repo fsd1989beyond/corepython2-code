@@ -3,16 +3,16 @@
 queue = []
 
 def enQ():
-    queue.append(raw_input('Enter new queue element: '))
+    queue.append(input('Enter new queue element: '))
 
 def deQ():
     if len(queue) == 0:
-        print 'Cannot dequeue from empty queue!'
+        print('Cannot dequeue from empty queue!')
     else:
-        print 'Removed [', queue.pop(0), ']'
+        print('Removed [', queue.pop(0), ']')
 
 def viewQ():
-    print str(queue)
+    print(str(queue))
 
 def showmenu():
     prompt = """
@@ -28,12 +28,12 @@ Enter choice: """
         chosen = 0
         while not chosen:
             try:
-                choice = raw_input(prompt)[0]
+                choice = input(prompt)[0]
             except (IndexError, EOFError, KeyboardInterrupt):
                 choice = 'q'
-            print '\nYou picked: [%s]' % choice
+            print('\nYou picked: [%s]' % choice)
             if choice not in 'devq':
-                print 'invalid option, try again'
+                print('invalid option, try again')
             else:
                 chosen = 1
 
