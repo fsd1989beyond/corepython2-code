@@ -63,3 +63,30 @@ data = (x for x in range(10) if x %2 == 0)
  - 总的来说，列表和元组都是有序的，可以存储任意数据类型的集合，区别主要在于下面这两点。  
    - 列表是动态的，长度可变，可以随意的增加、删减或改变元素。列表的存储空间略大于元组，性能略逊于元组。  
    - 元组是静态的，长度大小固定，不可以对元素进行增加、删减或者改变操作。元组相对于列表更加轻量级，性能稍优。
+   
+   
+   
+### 浅拷贝和深拷贝
+- 浅拷贝  
+    `浅拷贝，是指重新分配一块内存，创建一个新的对象，里面的元素是原对象中子对象的引用`
+  ```
+    l = [1,2,3]
+    n = list(l)
+
+    for i in range(l.__len__()):
+        print("list l element{} address is: {} ".format(i,id(l[i])))
+        print("list n element{} address is: {} ".format(i, id(n[i])))
+    ------------------------------------------------------------------
+    list l element0 address is: 140734895190272 
+    list n element0 address is: 140734895190272 
+    list l element1 address is: 140734895190304 
+    list n element1 address is: 140734895190304 
+    list l element2 address is: 140734895190336 
+    list n element2 address is: 140734895190336 
+   ```
+- 深拷贝  
+    `所谓深度拷贝，是指重新分配一块内存，创建一个新的对象，并且将原对象中的元素，以递归的方式，通过创建新的子对象拷贝到新对象中。因此，新对象和原对象没有任何关联`
+    ```
+     x = [1,2,3]
+     y = copy.deepcopy(x)
+    ```
